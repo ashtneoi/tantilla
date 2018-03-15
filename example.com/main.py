@@ -15,5 +15,5 @@ def hello(req):
 
 
 application = create_app(MOUNT_POINT, (
-    ("", hello),
+    ("hello", hello),
 ))
