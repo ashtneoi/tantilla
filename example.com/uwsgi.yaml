@@ -1,3 +1,3 @@
 uwsgi:
-    socket: uwsgi.socket
-    wsgi-file: app.py
+    socket: example.com/uwsgi.socket
+    wsgi-file: example.com/app.py
