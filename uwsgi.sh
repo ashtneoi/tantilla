@@ -8,5 +8,5 @@ fi
 
 DIR=$1
 shift
-source .env/bin/activate && \
+source .env/bin/activate && PYTHONPATH="${PYTHONPATH:-}:$(realpath .)" \
     uwsgi --chdir=example.com --yaml "$DIR/uwsgi.yaml" "$@"
