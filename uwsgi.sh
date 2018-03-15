@@ -8,4 +8,5 @@ fi
 
 DIR=$1
 shift
-source .env/bin/activate && uwsgi --yaml "$DIR/uwsgi.yaml" "$@"
+source .env/bin/activate && \
+    uwsgi --chdir=example.com --yaml "$DIR/uwsgi.yaml" "$@"
