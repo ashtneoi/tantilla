@@ -6,4 +6,4 @@ if [[ $# != 1 ]]; then
     exit 2
 fi
 
-source .env/bin/activate && uwsgi --yaml "$1/uwsgi.yaml"
+source .env/bin/activate && uwsgi --yaml "$1/uwsgi.yaml" "$@"
