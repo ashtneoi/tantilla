@@ -1,0 +1,11 @@
+.*.sw?
+*.pyc
+__pycache__/
+
+nginx.local.conf
+
+/.env/
+/tls/
+/nginx.pid
+/error.log
+/access.log

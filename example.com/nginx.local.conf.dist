@@ -1,0 +1,7 @@
+server_name example.com;
+listen 443 ssl;
+listen [::]:443 ssl;
+
+add_header Strict-Transport-Security "max-age=86400" always;
+ssl_certificate tls/example.com.cert;
+ssl_certificate_key tls/example.com.key;
