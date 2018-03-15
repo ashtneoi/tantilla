@@ -6,7 +6,9 @@ if [[ $# < 1 ]]; then
     exit 2
 fi
 
+HERE=$(dirname "$0")
 DIR=$1
 shift
-source .env/bin/activate && PYTHONPATH="${PYTHONPATH:-}:$(realpath .)" \
-    uwsgi --chdir=example.com --yaml "$DIR/uwsgi.yaml" "$@"
+source $HERE/.env/bin/activate && \
+    PYTHONPATH="${PYTHONPATH:-}":$(realpath "$HERE") uwsgi \
+    --chdir=$HERE/example.com --yaml "$DIR/uwsgi.yaml" "$@"
