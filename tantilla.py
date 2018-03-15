@@ -2,6 +2,11 @@ from functools import partial
 
 from werkzeug.exceptions import abort, HTTPException, NotFound
 from werkzeug.routing import Map, Rule
+from werkzeug.wrappers import Request, Response
+
+
+HTMLResponse = partial(Response, content_type='text/html')
+
 
 def create_app(mount_point, url_map):
     url_map = Map(
