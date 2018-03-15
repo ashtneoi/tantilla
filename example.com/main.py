@@ -3,7 +3,7 @@ from config import MOUNT_POINT
 from tantilla import create_app, HTMLResponse
 
 
-def hello(req, username):
+def hello(req):
     if req.method == 'POST':
         return abort(400)
     return HTMLResponse(
