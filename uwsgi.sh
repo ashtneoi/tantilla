@@ -11,4 +11,4 @@ DIR=$1
 shift
 source $HERE/.env/bin/activate && \
     PYTHONPATH="${PYTHONPATH:-}":$(realpath "$HERE") uwsgi \
-    --chdir=$HERE/example.com --yaml "$DIR/uwsgi.yaml" "$@"
+    --chdir=$HERE/example.com --socket=uwsgi.sock --wsgi-file=main.py "$@"

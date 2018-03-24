@@ -1,3 +1,0 @@
-uwsgi:
-    socket: uwsgi.sock
-    wsgi-file: main.py
