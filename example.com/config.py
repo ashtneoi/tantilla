@@ -1,1 +1,4 @@
-MOUNT_POINT = '/'
+import toml
+
+
+config = toml.load("config.toml")
