@@ -8,7 +8,14 @@ from werkzeug.wrappers import Request, Response
 HTMLResponse = partial(Response, content_type='text/html')
 
 
-def create_app(mount_point, url_map):
+def default_not_found(req):
+    with open("special/404.html") as f:
+        return HTMLResponse(
+            f.read(), status=404,
+        )
+
+
+def create_app(mount_point, url_map, not_found=default_not_found):
     url_map = Map(
         [Rule(mount_point + path, endpoint=ep) for (path, ep) in url_map]
     )
