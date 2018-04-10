@@ -13,7 +13,7 @@ def hello(req):
         render_path("tmpl/hello.htmo", {
             "base": MOUNT_POINT,
             "title": "hey",
-        }),
+        })
     )
 
 
