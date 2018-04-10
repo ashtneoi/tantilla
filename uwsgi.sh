@@ -2,11 +2,12 @@
 set -eu
 
 if [[ $# < 1 ]]; then
-    echo "Usage: $0 DIR [ARG ...]" >&2
+    echo "Usage: $0 NAME [ARG ...]" >&2
     exit 2
 fi
 
 here="$(dirname "$0")"
-DIR="$1"
+NAME="$1"
 shift
-"$here/with_env.sh" "$DIR" uwsgi --socket=uwsgi.sock --wsgi-file=main.py "$@"
+"$here/with_env.sh" "$here/$NAME" \
+    uwsgi --socket=uwsgi.sock --wsgi-file=main.py "$@"

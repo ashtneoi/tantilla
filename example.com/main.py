@@ -1,6 +1,9 @@
 from bakery import render_path
-from config import MOUNT_POINT
+from config import config
 from tantilla import create_app, HTMLResponse
+
+
+MOUNT_POINT = config["mount_point"]
 
 
 def hello(req):
