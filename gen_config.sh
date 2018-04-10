@@ -6,11 +6,11 @@ if [[ $# != 1 ]]; then
     exit 2
 fi
 
-here="$(dirname "$0")"
+root="$(dirname "$0")"
 NAME="$1"
-config="$here/$NAME/config.toml"
+config="$root/$NAME/config.toml"
 server_name="$(shtoml "$config" server_name)"
 mount_point="$(shtoml "$config" mount_point)"
 
-mint "$NAME/nginx.conf.tmpl" server_name="$server_name" \
-    mount_point="$mount_point" >"$NAME/nginx.conf"
+mint "$root/$NAME/nginx.conf.tmpl" server_name="$server_name" \
+    mount_point="$mount_point" >"$root/$NAME/nginx.conf"
