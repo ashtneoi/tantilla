@@ -1,3 +1,5 @@
+server_name {{server_name}};
+
 rewrite ^{{mount_point}}$ {{mount_point}}special/home.html last;
 
 location {{mount_point}}static/ {
