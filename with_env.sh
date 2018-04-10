@@ -10,7 +10,6 @@ here="$(dirname "$0")"
 DIR="$1"
 path_extra="$(realpath "$here")"
 shift
-echo "${PYTHONPATH:-}:$(realpath "$here")"
 source "$here/.env/bin/activate" && \
     cd "$DIR" && \
     PYTHONPATH="${PYTHONPATH:-}:$path_extra" "$@"

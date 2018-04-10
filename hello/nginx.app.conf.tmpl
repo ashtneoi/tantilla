@@ -1,15 +1,15 @@
 rewrite ^{{mount_point}}$ {{mount_point}}special/home.html last;
 
 location {{mount_point}}static/ {
-    root {{server_name}};
+    root {{app_name}};
 }
 
 location {{mount_point}}special/ {
     internal;
-    root {{server_name}};
+    root {{app_name}};
 }
 
 location {{mount_point}} {
     include uwsgi_params;
-    uwsgi_pass unix:{{server_name}}/uwsgi.sock;
+    uwsgi_pass unix:{{app_name}}/uwsgi.sock;
 }

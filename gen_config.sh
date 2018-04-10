@@ -13,4 +13,4 @@ server_name="$(shtoml "$config" server_name)"
 mount_point="$(shtoml "$config" mount_point)"
 
 mint "$root/$NAME/nginx.app.conf.tmpl" server_name="$server_name" \
-    mount_point="$mount_point" >"$root/$NAME/nginx.app.conf"
+    mount_point="$mount_point" app_name="$NAME" >"$root/$NAME/nginx.app.conf"
