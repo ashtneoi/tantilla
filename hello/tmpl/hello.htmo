@@ -1,5 +1,0 @@
-{{#wrap}}../../base.htmo:
-    <main>
-        <h1>Hey there!</h1>
-    </main>
-{{/wrap}}
