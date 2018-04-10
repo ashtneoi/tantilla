@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
+set -eu
 
-set -o errexit
-shopt -s nullglob
+root="$(dirname "$0")"
 
-if ! [[ -d .env ]]; then
-    virtualenv .env -p $(which python3)
+if ! [[ -d "$root/.env" ]]; then
+    virtualenv "$root/.env" -p "$(which python3)"
 fi
 
-source .env/bin/activate
-
+source "$root/.env/bin/activate"
 pip3 install uWSGI==2.0.14 Werkzeug==0.11.15 toml==0.9.4

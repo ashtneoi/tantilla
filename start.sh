@@ -6,12 +6,12 @@ if [[ $# != 1 ]]; then
     exit 2
 fi
 
-here="$(dirname "$0")"
+root="$(dirname "$0")"
 NAME="$1"
 
-"$here/gen_config.sh" "$NAME"
+"$root/gen_config.sh" "$NAME"
 echo "    vvvvvvvvvvvvvvvvvvv"
 echo ">>> Reload nginx please <<<"
 echo "    ^^^^^^^^^^^^^^^^^^^"
 echo
-"$here/uwsgi.sh" "$NAME"
+"$root/uwsgi.sh" "$NAME"

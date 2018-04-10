@@ -6,8 +6,8 @@ if [[ $# < 1 ]]; then
     exit 2
 fi
 
-here="$(dirname "$0")"
+root="$(dirname "$0")"
 NAME="$1"
 shift
-"$here/with_env.sh" "$here/$NAME" \
+"$root/with_env.sh" "$root/$NAME" \
     uwsgi --socket=uwsgi.sock --wsgi-file=main.py "$@"
