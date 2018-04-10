@@ -21,10 +21,9 @@ The rest of the dependencies are included in this repo or installed automaticall
    dependencies.
 3. Copy `nginx.local.conf.dist` to `nginx.local.conf` and fill in the user who
    you want nginx to run as.
-4. Add some apps.
-5. Put your TLS keys and certs in `tls/`. If you need a self-signed cert for
-   whatever reason, feel free to use `gen_self_cert.sh`.
-   (`./gen_self_cert.sh tls/foo` will create `tls/foo.key` and `tls/foo.cert`.)
+4. The implicit default nginx server will try to ignore requests without
+   hostnames. This requires a TLS cert, which you can generate by
+   running `./gen_self_cert.sh tls/default`.
 
 ### installing an app
 
@@ -45,12 +44,14 @@ server {
 ```
 
 3. Create `APPNAME/config.toml` and set `server_name` and `mount_point`
-   appropriately. `mount_point` must end with a slash.:
+   appropriately. `mount_point` must end with a slash:
 
 ```toml
 server_name = "example.com"
 mount_point = "/"
 ```
+
+4. Don't forget your TLS cert!
 
 ### running an app
 
@@ -59,8 +60,8 @@ mount_point = "/"
 2. Run `./nginx.sh` to start nginx, if you haven't already. 
 
 Each time you modify an app, kill `start.sh` and run it again. If you modified
-any nginx configs or `APPNAME/config.toml`, you also need to run `./nginx.sh -s
-reload`.
+any nginx configs or `APPNAME/config.toml`, you also need to run
+`./nginx.sh -s reload`.
 
 ## the name
 
