@@ -2,10 +2,11 @@
 *.pyc
 __pycache__/
 
-nginx.local.conf
+nginx.app.conf
 
 /.env/
 /tls/
+/nginx.local.conf
 /nginx.pid
 /error.log
 /access.log
