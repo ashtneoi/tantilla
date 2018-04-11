@@ -35,6 +35,7 @@ The rest of the dependencies are included in this repo or installed automaticall
 
 ```none
 server {
+  server_name example.com;
   listen 443 ssl;
   listen [::]:443 ssl;
   ssl_certificate tls/example.com.cert;
