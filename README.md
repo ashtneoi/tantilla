@@ -45,7 +45,7 @@ server {
 ```
 
 3. Create `APPNAME/config.toml` and set `server_name` and `mount_point`
-   appropriately. `mount_point` must end with a slash:
+   appropriately. `mount_point` must start and end with a slash:
 
 ```toml
 server_name = "example.com"
