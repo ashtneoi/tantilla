@@ -25,7 +25,7 @@ def create_app(mount_point, url_map, not_found=default_not_found):
                 endpoint, values = url_map.bind_to_environ(environ).match()
                 if req.method not in ('GET', 'POST'):
                     return abort(400)(environ, start_response)
-                response = endpoint(req)
+                response = endpoint(req, **values)
             except NotFound:
                 with open("special/404.html") as f:
                     response = HTMLResponse(
