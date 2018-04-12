@@ -52,6 +52,15 @@ class AuthManager():
                 return resp
         return new_func
 
+    def require_auth_static(self, name):
+        @auth_mgr.require_auth
+        def inner(req, username):
+            with open(name) as f:
+                return HTMLResponse(
+                    f.read()
+                )
+        return inner
+
     def try_log_in(self, username, password):
         hashed = accounts.get(username)
         if hashed is None:
