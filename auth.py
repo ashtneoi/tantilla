@@ -6,7 +6,7 @@ from os import urandom
 from werkzeug.urls import url_quote
 from werkzeug.utils import redirect
 
-from hashpw import checkpw
+from pw import checkpw
 from secrets import accounts
 
 
