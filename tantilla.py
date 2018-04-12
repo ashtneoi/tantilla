@@ -27,10 +27,7 @@ def create_app(mount_point, url_map, not_found=default_not_found):
                     return abort(400)(environ, start_response)
                 response = endpoint(req, **values)
             except NotFound:
-                with open("special/404.html") as f:
-                    response = HTMLResponse(
-                        f.read(), status=404,
-                    )
+                response = not_found(req)
             except HTTPException as e:
                 response = e
             return response(environ, start_response)
