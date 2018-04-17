@@ -3,11 +3,15 @@ from base64 import b64encode
 from functools import wraps
 from os import urandom
 
+import toml
 from werkzeug.urls import url_quote
 from werkzeug.utils import redirect
 
 from pw import checkpw
-from secrets import accounts
+
+
+secrets = toml.load("secrets.toml")
+users = secrets['users']
 
 
 class AuthManager():
@@ -29,7 +33,7 @@ class AuthManager():
         if session is None:
             return None
         username, expiration = session
-        if username in accounts and expiration > datetime.datetime.now():
+        if username in users and expiration > datetime.datetime.now():
             return username
         else:
             del self.sessions[id_]
@@ -62,7 +66,7 @@ class AuthManager():
         return inner
 
     def try_log_in(self, username, password):
-        hashed = accounts.get(username)
+        hashed = users.get(username).encode('ascii')
         if hashed is None:
             return self.USER_NOT_FOUND
         if not checkpw(password, hashed):
