@@ -41,10 +41,10 @@ class AuthManager():
 
     def require_auth(self, func):
         @wraps(func)
-        def new_func(req):
+        def new_func(req, *args, **kwargs):
             username = self.cookie_to_username(req.cookies.get("id"))
             if username:
-                return func(req, username)
+                return func(req, username, *args, **kwargs)
             else:
                 resp = redirect(
                     self.mount_point + "login?from=" + url_quote(
