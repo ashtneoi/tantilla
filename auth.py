@@ -66,10 +66,10 @@ class AuthManager():
         return inner
 
     def try_log_in(self, username, password):
-        hashed = users.get(username).encode('ascii')
+        hashed = users.get(username)
         if hashed is None:
             return self.USER_NOT_FOUND
-        if not checkpw(password, hashed):
+        if not checkpw(password, hashed.encode('ascii')):
             return self.PW_WRONG
 
         sessions2 = self.sessions.copy()
