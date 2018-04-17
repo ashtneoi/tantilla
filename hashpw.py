@@ -11,4 +11,6 @@ from pw import hashpw
 
 
 if __name__ == '__main__':
-    print(repr(hashpw(input("Password: "))))
+    print("\"{}\"".format(
+            hashpw(input("Password: ")).decode('ascii')
+    ))
