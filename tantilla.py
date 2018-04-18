@@ -1,9 +1,10 @@
-from functools import partial
+from functools import partial, wraps
 from traceback import print_exc
 
 from werkzeug.exceptions import \
     abort, BadRequestKeyError, HTTPException, NotFound
 from werkzeug.routing import Map, Rule
+from werkzeug.utils import redirect
 from werkzeug.wrappers import Request, Response
 
 
@@ -24,6 +25,12 @@ def status(req, code):
     else:
         print("warning: unhandled status code {}".format(code))
         abort(code)
+
+
+def static_redirect(to):
+    def inner(req):
+        return redirect(to)
+    return inner
 
 
 def create_app(mount_point, url_map, status=status):
