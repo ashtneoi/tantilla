@@ -7,11 +7,14 @@ import toml
 from werkzeug.urls import url_quote
 from werkzeug.utils import redirect
 
+from config import config
 from pw import checkpw
 
 
 secrets = toml.load("secrets.toml")
 users = secrets['users']
+
+COOKIE_NAME = 'id' + config['mount_point'].replace('/', '_')
 
 
 class AuthManager():
@@ -42,7 +45,7 @@ class AuthManager():
     def require_auth(self, func):
         @wraps(func)
         def new_func(req, *args, **kwargs):
-            username = self.cookie_to_username(req.cookies.get("id"))
+            username = self.cookie_to_username(req.cookies.get(COOKIE_NAME))
             if username:
                 return func(req, username, *args, **kwargs)
             else:
@@ -52,7 +55,7 @@ class AuthManager():
                     ),
                     code=303,
                 )
-                resp.delete_cookie("id")
+                resp.delete_cookie(COOKIE_NAME)
                 return resp
         return new_func
 
