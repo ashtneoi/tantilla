@@ -10,4 +10,4 @@ root="$(dirname "$0")"
 NAME="$1"
 shift
 
-"$root/start.sh" "$NAME" --daemonize2 "$root/$NAME/uwsgi.log" "$@"
+"$root/start.sh" "$NAME" --daemonize2 uwsgi.log "$@"
