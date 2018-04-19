@@ -15,12 +15,12 @@ def status(req, code):
     if code == 404:
         with open("special/404.html") as f:
             return HTMLResponse(
-                f.read(), status=404,
+                f.read(), status=code,
             )
     elif 500 <= code < 600:
         with open("special/50x.html") as f:
             return HTMLResponse(
-                f.read(), status=404,
+                f.read(), status=code,
             )
     else:
         print("warning: unhandled status code {}".format(code))
