@@ -83,7 +83,7 @@ class AuthManager():
 
         id_ = b64encode(urandom(32)).decode('ascii')
         assert id_ not in self.sessions  # until I verify this works
-        expiration = datetime.datetime.now() + datetime.timedelta(days=14)
+        expiration = datetime.datetime.now() + datetime.timedelta(days=60)
         self.sessions[id_] = (username, expiration)
 
         return id_, expiration
